@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html ng-app="welkin">
+    <head>
+        <title>Welkin Music Player</title>
+        
+        <meta name="theme-color" content="#21506d">
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        
+        <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+        <link rel="stylesheet" type="text/css" href="css/style.css"> 
+
+    </head>
+
+    <body ng-controller="MainCtrl">
+      
+    <article class="screen">
+        <input type="checkbox" value="None" id="magicButton" name="check" />
+        <label class="main" for="magicButton"></label>
+
+        <div class="coverImage" ng-style="{'background-image':'url('+ current.cover_image +')'}"></div>
+        <div class="search"></div>
+        <div class="bodyPlayer"></div>
+
+        <table class="list">
+          <tr class="song" ng-repeat="song in songs">
+            <td class="nr">
+              <h5>{{$index + 1}}<h5></td>
+            <td class="title"><h6>{{song.song}}<h6></td>
+            <td class="length"><h5>3:54<h5></td>
+            <td><input type="checkbox" id="heart"/><label class="zmr" for="heart"></label></td>
+          </tr>
+    
+          <div class="shadow"></div>
+          
+          <div class="bar">
+            <videogular class="videogular-container audio">
+                <vg-media vg-src="config.sources" vg-type="audio"></vg-media>
+
+              <vg-controls>
+                <vg-play-pause-button></vg-play-pause-button>
+                <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
+                <vg-scrub-bar>
+                  <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                </vg-scrub-bar>
+                <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
+                <vg-volume>
+                  <vg-mute-button></vg-mute-button>
+                </vg-volume>
+              </vg-controls>
+            </videogular>
+          </div>
+          
+          <div class="info">
+            <h4>{{current.song}}</h4>
+            <h3>{{current.artists}}</h3>
+          </div>
+      <audio preload="auto" id="audio" controls>
+        <source src="http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.mp3">
+        <source src="http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.ogg">
+        </audio>
+              <table class="player">
+                <td><input type="checkbox" id="backward"/><label class="backward" for="backward"></label></td>
+                <td><input type="checkbox" id="play" title="Play" onclick="togglePlayPause()"/><label class="play" for="play"></label></td>
+                <td><input type="checkbox" id="forward"/><label class="forward" for="forward"></label></td>
+              </table>
+              
+              <table class="footer">
+                <td><input type="checkbox" id="love" checked /><label class="love" for="love"></label></td>
+                <td><input type="checkbox" id="shuffle"/><label class="shuffle" for="shuffle"></label></td>
+                <td><input type="checkbox" id="repeat" checked /><label class="repeat" for="repeat"></label></td>
+                <td><input type="checkbox" id="options"/><label class="options" for="options"></label></td>
+              </table>
+              
+              <div class="current"><h2>{{current.song}}</h2></div>          
+
+    </article>
+
+        <script type="text/javascript" src="/node_modules/angular/angular.min.js"></script>
+        <script type="text/javascript" src="/node_modules/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript" src="/node_modules/angular-resource/angular-resource.min.js"></script>
+        <script type="text/javascript" src="/node_modules/angular-ui-bootstrap/ui-bootstrap.min.js"></script>
+        <script type="text/javascript" src="/node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.min.js"></script>        
+        <script type="text/javascript" src="/node_modules/angular-sanitize/angular-sanitize.min.js"></script>
+        <script type="text/javascript" src="/node_modules/videogular/dist/videogular/videogular.min.js"></script>
+        <script type="text/javascript" src="/node_modules/videogular-controls/vg-controls.min.js"></script>
+
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/controllers/mainctrl.js"></script>
+        <script type="text/javascript" src="js/services/apiservice.js"></script>
+    </body>
+</html>

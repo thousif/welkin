@@ -1,0 +1,23 @@
+{
+  "name": "welkin",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.4.3",
+    "angular-resource": "^1.4.3",
+    "angular-route": "^1.4.3",
+    "angular-sanitize": "^1.4.3",
+    "angular-ui-bootstrap": "^0.14.3",
+    "body-parser": "^1.17.1",
+    "bootstrap": "^3.3.7",
+    "express": "^4.15.2",
+    "fs": "0.0.1-security",
+    "method-override": "^2.3.8",
+    "videogular": "^2.0.1",
+    "videogular-controls": "^1.4.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js"
+  }
+}
