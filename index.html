@@ -28,9 +28,9 @@
         <div class="bodyPlayer"></div>
 
         <table class="list">
-          <tr class="song" ng-repeat="song in songs">
+          <tr class="song" ng-repeat="song in playlist">
             <td class="nr">
-              <h5>{{$index + 1}}<h5></td>
+              <h5>{{song.id + 1}}<h5></td>
             <td class="title"><h6>{{song.song}}<h6></td>
             <td class="length"><h5>3:54<h5></td>
             <td><input type="checkbox" id="heart"/><label class="zmr" for="heart"></label></td>
@@ -39,22 +39,12 @@
           <div class="shadow"></div>
           
           <div class="bar">
-            <videogular class="videogular-container audio">
-                <vg-media vg-src="config.sources" vg-type="audio"></vg-media>
-
-              <vg-controls>
-                <vg-play-pause-button></vg-play-pause-button>
-                <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
-                <vg-scrub-bar>
-                  <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-                </vg-scrub-bar>
-                <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
-                <vg-volume>
-                  <vg-mute-button></vg-mute-button>
-                </vg-volume>
-              </vg-controls>
-            </videogular>
+            <div class="bar-progress" ng-style="{width : progress }"></div>
+            <div class="bar-slider" ng-style="{width : progress }"></div>
+            <div class="bar-timer">{{timer}}</div>
+            <div class="bar-duration">{{duration}}</div>
           </div>
+
           
           <div class="info">
             <h4>{{current.song}}</h4>
@@ -65,9 +55,9 @@
         <source src="http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.ogg">
         </audio>
               <table class="player">
-                <td><input type="checkbox" id="backward"/><label class="backward" for="backward"></label></td>
-                <td><input type="checkbox" id="play" title="Play" onclick="togglePlayPause()"/><label class="play" for="play"></label></td>
-                <td><input type="checkbox" id="forward"/><label class="forward" for="forward"></label></td>
+                <td><input ng-click="Player.skip('prev')" type="checkbox" id="backward"/><label class="backward" for="backward"></label></td>
+                <td><input type="checkbox" id="play" title="Play" ng-click="togglePlay(current.id)" /><label class="play" for="play"></label></td>
+                <td><input type="checkbox" ng-click="Player.skip('next')" id="forward"/><label class="forward" for="forward"></label></td>
               </table>
               
               <table class="footer">
@@ -78,7 +68,6 @@
               </table>
               
               <div class="current"><h2>{{current.song}}</h2></div>          
-
     </article>
 
         <script type="text/javascript" src="/node_modules/angular/angular.min.js"></script>
@@ -87,9 +76,8 @@
         <script type="text/javascript" src="/node_modules/angular-ui-bootstrap/ui-bootstrap.min.js"></script>
         <script type="text/javascript" src="/node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.min.js"></script>        
         <script type="text/javascript" src="/node_modules/angular-sanitize/angular-sanitize.min.js"></script>
-        <script type="text/javascript" src="/node_modules/videogular/dist/videogular/videogular.min.js"></script>
-        <script type="text/javascript" src="/node_modules/videogular-controls/vg-controls.min.js"></script>
-
+        <script type="text/javascript" src="/node_modules/howler/src/howler.core.js"></script>
+        <script type="text/javascript" src="/node_modules/siriwavejs/siriwave.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
         <script type="text/javascript" src="js/controllers/mainctrl.js"></script>
         <script type="text/javascript" src="js/services/apiservice.js"></script>

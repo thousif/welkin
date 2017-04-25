@@ -12,9 +12,9 @@
     "bootstrap": "^3.3.7",
     "express": "^4.15.2",
     "fs": "0.0.1-security",
+    "howler": "^2.0.3",
     "method-override": "^2.3.8",
-    "videogular": "^2.0.1",
-    "videogular-controls": "^1.4.4"
+    "siriwavejs": "^2.0.2"
   },
   "devDependencies": {},
   "scripts": {

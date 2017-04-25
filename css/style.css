@@ -370,15 +370,41 @@ td > #heart8:checked ~ label.zmr:before {
 }
 
 .bar {
-  background: url('http://imgh.us/bar_3.svg') no-repeat;
   background-size: 100%;
   width: 320px;
-  height: 21px;
+  height: 2px;
+  background-color: #6d6d6d;
   position: absolute;
   top: 407px;
   left: 23px;
   transform-origin: 0% 0%;
   transition: all 0.3s ease-in;
+}
+
+.bar-progress {
+  width: 10%;
+  height: 2px;
+  background-color: #f15850;
+}
+
+.bar-slider{
+  height: 10px;
+  margin-top: -6px;
+  margin-bottom: -6px;
+  border-right: 2px solid #bbb;
+  width: 10%;
+}
+
+.bar-timer{
+  float: left;
+  margin: 5px 0;
+  color: #6d6d6d;
+}
+
+.bar-duration{
+  float: right;
+  margin: 5px 0;
+  color: #6d6d6d;
 }
 
 .screen > #magicButton:checked ~ .bar {
@@ -391,6 +417,7 @@ td > #heart8:checked ~ label.zmr:before {
 .info {
   width: 157px;
   position: absolute;
+  text-align: center;
   left: 104px;
   top: 440px;
   transition: all 0.3s ease-in;
